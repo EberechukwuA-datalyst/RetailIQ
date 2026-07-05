@@ -7,3 +7,4 @@ RetailIQ is an end-to-end data project designed to demonstrate skills in Data An
 This project is being built from scratch as part of my journey to become a Data Engineer and Data Analyst.
 
 ---
+Project Status: 🚧 In Progress
