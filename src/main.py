@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 sales_data = pd.read_csv("data/sales.csv")
 print("\nNumber of rows:")
@@ -25,3 +26,20 @@ print(sales_data["Revenue"].mean())
 sales_data.to_csv("data/sales_report.csv", index=False)
 
 print("\nSales report saved successfully!")
+products_data = pd.read_csv("data/products.csv")
+print("\nProducts table:")
+print(products_data)
+merged_data = pd.merge(sales_data, products_data, on="Product")
+
+print("\nMerged sales and products data:")
+print(merged_data)
+category_revenue = merged_data.groupby("Category")["Revenue"].sum()
+
+print("\nRevenue by category:")
+print(category_revenue)
+plt.bar(category_revenue.index, category_revenue.values)
+plt.title("Revenue by Category")
+plt.xlabel("Category")
+plt.ylabel("Revenue (₦)")
+plt.savefig("reports/revenue_by_category.png")
+plt.show()
