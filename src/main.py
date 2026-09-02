@@ -11,6 +11,15 @@ sales_data["Revenue"] = sales_data["Quantity"] * sales_data["Price"]
 print(sales_data)
 print("\nTotal Revenue:")
 print(sales_data["Revenue"].sum())
+sales_data["Revenue_Percentage"] = (
+    sales_data["Revenue"] / sales_data["Revenue"].sum()
+) * 100
+
+sales_data["Revenue_Percentage"] = sales_data["Revenue_Percentage"].round(2)
+print("\nRevenue contribution by product:")
+print(sales_data[["Product", "Revenue", "Revenue_Percentage"]])
+print("\nProducts contributing more than 20% of total revenue:")
+print(sales_data[sales_data["Revenue_Percentage"] > 20])
 print("\nProduct with the highest revenue:")
 print(sales_data.loc[sales_data["Revenue"].idxmax()])
 print("\nProduct with the lowest revenue:")
