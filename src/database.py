@@ -12,6 +12,7 @@ connection = mysql.connector.connect(
 )
 
 cursor = connection.cursor()
+cursor.execute("TRUNCATE TABLE sales")
 sales_data = pd.read_csv("data/sales.csv")
 
 print(sales_data)
