@@ -20,6 +20,18 @@ The RetailIQ Power BI dashboard provides an interactive overview of retail sales
 RetailIQ follows an end-to-end data workflow:
 
 CSV Files → Python/Pandas → MySQL Database → SQL Analysis → Power BI Dashboard
+### Data Model
+
+RetailIQ uses a relational database structure with two main tables:
+
+- **products** — stores each unique product and its category.
+- **sales** — stores individual sales transactions.
+
+The tables are connected through `ProductID`:
+
+products (1) → (*) sales
+
+`ProductID` is the primary key in the `products` table and a foreign key in the `sales` table, creating a one-to-many relationship where one product can appear in multiple sales transactions.
 
 ### Data Flow
 
@@ -45,13 +57,14 @@ CSV Files → Python/Pandas → MySQL Database → SQL Analysis → Power BI Das
 ---
 ## Key Business Insights
 
-- Total revenue generated: **₦66,400**
-- Total quantity sold: **65 units**
-- Total products analyzed: **5**
-- **Rice** generated the highest product revenue at **₦25,000**
-- **Grains** was the highest-performing category with **₦25,000** in revenue
-- Rice contributed approximately **37.65%** of total revenue
-- Rice, Milk, and Sugar each contributed more than 20% of total revenue
+- Total Revenue: ₦100,400
+- Total Quantity Sold: 92 units
+- Total Unique Products: 5
+- Total Sales Transactions: 10
+- Rice generated the highest product revenue at ₦50,000.
+- Grains was the highest-performing category with ₦50,000 in revenue.
+- Dairy generated ₦24,000 in revenue.
+- Eggs recorded the highest quantity sold at 42 units.
 
 ---
 ## Project Structure
