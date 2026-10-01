@@ -32,6 +32,16 @@ The tables are connected through `ProductID`:
 products (1) → (*) sales
 
 `ProductID` is the primary key in the `products` table and a foreign key in the `sales` table, creating a one-to-many relationship where one product can appear in multiple sales transactions.
+### Incremental Data Pipeline
+
+RetailIQ uses an incremental loading approach to avoid unnecessary full database reloads.
+
+- Existing products retain their ProductID.
+- New products are inserted only when they do not already exist.
+- Each sales transaction has a unique TransactionID.
+- Previously loaded transactions are skipped automatically.
+- New transactions are inserted without duplicating existing records.
+- Database transactions use commit and rollback handling to protect data integrity if a pipeline run fails.
 
 ### Data Flow
 
@@ -57,15 +67,15 @@ products (1) → (*) sales
 ---
 ## Key Business Insights
 
-- Total Revenue: ₦100,400
-- Total Quantity Sold: 92 units
+- Total Revenue: ₦107,900
+- Total Quantity Sold: 95 units
 - Total Unique Products: 5
-- Total Sales Transactions: 10
-- Rice generated the highest product revenue at ₦50,000.
-- Grains was the highest-performing category with ₦50,000 in revenue.
+- Total Sales Transactions: 11
+- Rice generated the highest product revenue at ₦57,500.
+- Grains was the highest-performing category with ₦57,500 in revenue.
 - Dairy generated ₦24,000 in revenue.
 - Eggs recorded the highest quantity sold at 42 units.
-
+- Transaction-level dates enable daily revenue trend analysis.
 ---
 ## Project Structure
 
