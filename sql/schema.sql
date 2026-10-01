@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS products (
 );
 CREATE TABLE IF NOT EXISTS sales (
     SaleID INT AUTO_INCREMENT PRIMARY KEY,
+    TransactionID VARCHAR(20) NOT NULL UNIQUE,
+    TransactionDate DATE NOT NULL,
     ProductID INT NOT NULL,
     Quantity INT,
     Price DECIMAL(10,2),
